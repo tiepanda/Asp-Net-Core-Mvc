@@ -2,7 +2,21 @@
 
 
 
-<h1>Category List</h1>
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-6">
+            <h2 class="text—primary">
+                Category List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-outline-dark">
+                <i class="bi bi-bookmark-plus"></i> Create list
+            </a>
+        </div>
+    </div>
+
+</div>
 
 <table class="table table-bordered table-striped">
    <thead>
@@ -21,11 +35,19 @@
         @foreach (var obj in Model.OrderBy(u => u.DisplayOrder)@* ".OrderBy(u => u.DisplayOrder) " this code helps us in arranging the DB data in accessinding order*@)
         {
             <tr>
-                <td>
+                <td class="col-4 md-lg-2">
                     @obj.Name
                 </td>
-                <td>
+                <td class="col-4 md-lg-2 ">
                     @obj.DisplayOrder
+                </td>
+                <td class="row-1 align-content-end">
+                    <div class="btn btn-outline-primary">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </div>
+                    <div class="btn btn-outline-danger">
+                        <i class="bi bi-trash-fill"></i> Delete
+                    </div>
                 </td>
             </tr>
 
