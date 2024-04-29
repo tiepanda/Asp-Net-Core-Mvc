@@ -1,21 +1,21 @@
 ﻿@model Category
 
 
+<form method="post">
 
-<form method="post" >
-
+    <input asp-for="Id" hidden />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-        <h2 class="text-dark">Create Category</h2>
-        <hr/>
-    </div> 
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="mb-3 row p-1">
-        <label asp-for="Name" class="p-0"></label>
-        <input asp-for="Name" type="text" class="form-control"/>
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="mb-3 row p-1">
+            <h2 class="text-dark">Edit Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
             <label asp-for="DisplayOrder" class="p-0"></label>
             <input asp-for="DisplayOrder" type="number" class="form-control" />
             <span asp-validation-for="DisplayOrder" class="text-danger"></span>
@@ -24,9 +24,9 @@
     </div>
 
     <div class="row">
-        <div class ="col-3 mb-lg-2">
+        <div class="col-3 mb-lg-2">
             <button type="submit" class="btn btn-outline-dark form-control ">
-                create
+                Make Changes
             </button>
 
         </div>
@@ -47,8 +47,9 @@
 
 
 
+
 @section Scripts{
     @{
-    <partial name="_ValidationScriptsPartial.cshtml"/>
+        <partial name="_ValidationScriptsPartial.cshtml" />
     }
 }

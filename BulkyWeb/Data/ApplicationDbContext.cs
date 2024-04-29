@@ -20,6 +20,7 @@ namespace BulkyWeb.Data
                 new Category { Id = 2, Name = "motorsports", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "art", DisplayOrder = 3 }
                 );
+
         }
 
 
