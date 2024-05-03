@@ -1,0 +1,59 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.IndexModel
+
+
+@* <partial name="_Notification" /> *@
+
+
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-6">
+            <h2 class="text—primary">
+                Category List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="/categories/create" class="btn btn-outline-dark">
+                <i class="bi bi-bookmark-plus"></i> Create list
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+
+        <tr>
+            <th>
+                Dispalay Name
+            </th>
+            <th>
+                Dispalay Order
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.CategoryList.OrderBy(u => u.DisplayOrder)@* ".OrderBy(u => u.DisplayOrder) " this code helps us in arranging the DB data in accessinding order*@)
+        {
+            <tr>
+                <td class="col-4 md-lg-2">
+                    @obj.Name
+                </td>
+                <td class="col-4 md-lg-2 ">
+                    @obj.DisplayOrder
+                </td>
+                <td class="row-1 align-content-end">
+                    <a asp-page="/categories/edit" asp-route-id="@obj.Id" class="btn btn-outline-primary">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a asp-page="/categories/Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger">
+                        <i class="bi bi-trash-fill"></i> Delete
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
