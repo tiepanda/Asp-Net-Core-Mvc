@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BulkyWebRazor_Temp.Pages.Categories
 {
+    [BindProperties]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _db;
 
-        [BindProperty]
         public Category Category{ get; set; }
 
         public CreateModel(ApplicationDbContext db)
@@ -26,6 +26,8 @@ namespace BulkyWebRazor_Temp.Pages.Categories
         {
             _db.Categories.Add(Category);
             _db.SaveChanges();
+            TempData["success"] = "The Category is been Created successfully";
+
             return RedirectToPage("Index");
 
         }
