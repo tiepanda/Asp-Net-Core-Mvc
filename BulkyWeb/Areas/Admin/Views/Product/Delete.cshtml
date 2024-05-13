@@ -1,0 +1,74 @@
+﻿@model Product
+
+
+<div class="card shadow border-0 my-5">
+    <div class="card-header bg-dark-subtle bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-dark fw-bolder py-2">Delete Product</h2>
+
+            </div>
+        </div>
+        <form method="post">
+
+            <input asp-for="Id" hidden />
+            <div class="border p-3 mt-4">
+                @* <div class="row pb-2">
+                    <h2 class="text-dark">Delete Product</h2>
+                    <hr />
+                </div> *@
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3 row p-1">
+                    <label asp-for="TicketTitle" class="p-0 ms-2"></label>
+                    <input asp-for="TicketTitle" disabled type="text" class="form-control" />
+                </div>
+                <div class="mb-3 row p-1">
+                    <label asp-for="Description" class="ms-2 p-0"></label>
+                    <textarea asp-for="Description" disabled type="text" class="form-control"></textarea>
+
+                </div>
+
+                <div class="mb-3 row p-1">
+                    <label asp-for="ISBN" class="p-0 ms-2"></label>
+                    <input asp-for="ISBN" disabled type="text" class="form-control" />
+                </div>
+                <div class="mb-3 row p-1">
+                    <label asp-for="Publisher" class="p-0 ms-2"></label>
+                    <input asp-for="Publisher" disabled type="text" class="form-control" />
+                </div>
+                <div class="mb-3 row p-1">
+                    <label asp-for="TicketPrice" class="p-0 ms-2"></label>
+                    <input asp-for="TicketPrice" disabled type="number" class="form-control" />
+                </div>
+                <div class="mb-3 row p-1">
+                    <label asp-for="Location" class="p-0 ms-2"></label>
+                    <input asp-for="Location" disabled type="text" class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="card-body p-4">
+            </div>
+            <div class="row">
+                <div class="col-3 mb-lg-2">
+                    <button type="submit" class="btn btn-outline-danger form-control ">
+                        Delete Record
+                    </button>
+
+                </div>
+                <div class="col-3 mb-lg-2">
+                    <a asp-controller="Product" asp-action="Index" class=" btn btn-outline-light border form-control ">
+                        Back To list
+                    </a>
+                </div>
+            </div>
+
+        </form>     
+        
+    </div>
+</div>
+
+
+
+
+

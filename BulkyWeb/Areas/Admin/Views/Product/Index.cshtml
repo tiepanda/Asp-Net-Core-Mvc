@@ -1,0 +1,88 @@
+﻿@model List<Product>
+
+<partial name="_Notification" />
+
+
+<div class="card shadow border-0 my-5 " style=" ">
+    <div class="card-header bg-dark  bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Product List</h2>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-body p-3">
+        <div class="row pb-1">
+            <div class="col-6">
+                
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Product" asp-action="Create" class="btn btn-outline-dark">
+                    <i class="bi bi-bookmark-plus"></i>Create list
+                </a>
+            </div>
+        </div>
+
+   
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                    <th>TicketTitle</th>
+                    <th>Description</th>
+                    <th>ISBN</th>
+                    <th>Publisher</th>
+                    <th>TicketPrice</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td class="col-2 md-lg-1">
+                        @obj.TicketTitle
+                    </td>
+                    <td class="col-3 md-lg-2">
+                        @obj.Description
+                    </td>
+                    <td class="col-1 md-lg-1">
+                        @obj.ISBN
+                    </td>
+                    <td class="col-1 md-lg-1">
+                        @obj.Publisher
+                    </td>
+                    <td class="col-1 md-lg-1 ">
+                        @obj.TicketPrice
+                    </td>
+                    <td class="col-2 md-lg-1 ">
+                        @obj.Location
+                    </td>
+                    <td class="col-1 md-lg-1 ">
+                        @* @obj.Category *@
+                    </td>
+                    <td class="row-1 align-content-end">
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-primary">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+
+
