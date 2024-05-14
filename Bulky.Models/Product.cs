@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bulky.Models
 {
@@ -36,8 +37,12 @@ namespace Bulky.Models
 
 
 
+        //[Required]
+        public int CategoryId { get; set; }
 
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
 
-
+        public string ImageUrl { get; set; }
     }
 }

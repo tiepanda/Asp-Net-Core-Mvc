@@ -3,6 +3,7 @@ using Bulky.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240513104402_addForeignKeyForCategoryProductRelation")]
+    partial class addForeignKeyForCategoryProductRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,10 +84,6 @@ namespace Bulky.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -102,18 +101,15 @@ namespace Bulky.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CategoryId = 3,
+                            CategoryId = 1,
                             Description = "a game relese Event .... .... .",
                             ISBN = "123123123",
-                            ImageUrl = "",
                             Location = "Bengaluru, KA, IN",
                             Publisher = "Riot",
                             TicketPrice = 99.0,
@@ -122,10 +118,9 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Description = "it's a drag race event  where modified, 2/4wheel builts and stock vehicles and showcase and much more.... .... .",
                             ISBN = "231231231",
-                            ImageUrl = "",
                             Location = "Pune, MH, IN",
                             Publisher = "Elite Octane",
                             TicketPrice = 800.0,
@@ -134,10 +129,9 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
+                            CategoryId = 1,
                             Description = "it's a event for Gamer  and costume computer build where people  can show there skill in gaming and build unique computer.... .... .",
                             ISBN = "312312312",
-                            ImageUrl = "",
                             Location = "Whitefield, KA, IN",
                             Publisher = "Intel",
                             TicketPrice = 0.0,
@@ -149,7 +143,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "badminton tournament organised by Sai academy.... .... .",
                             ISBN = "142323423",
-                            ImageUrl = "",
                             Location = "Mysore, KA, IN",
                             Publisher = "Sai academy",
                             TicketPrice = 199.0,
@@ -158,10 +151,9 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            CategoryId = 3,
+                            CategoryId = 1,
                             Description = "a game relese Event .... .... .",
                             ISBN = "132132132",
-                            ImageUrl = "",
                             Location = "Bengaluru, KA, IN",
                             Publisher = "Riot",
                             TicketPrice = 29.0,
@@ -170,26 +162,14 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 6,
-                            CategoryId = 2,
+                            CategoryId = 1,
                             Description = "it's a drag race event  where modified, 2/4wheel builts and stock vehicles and showcase and much more.... .... .",
                             ISBN = "213213213",
-                            ImageUrl = "",
                             Location = "Pune, MH, IN",
                             Publisher = "Elite Octane",
                             TicketPrice = 800.0,
                             TicketTitle = "The Valley Run"
                         });
-                });
-
-            modelBuilder.Entity("Bulky.Models.Product", b =>
-                {
-                    b.HasOne("Bulky.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

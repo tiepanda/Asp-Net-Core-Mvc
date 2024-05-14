@@ -51,6 +51,13 @@
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
 
+                <div class="mb-3 row p-1">
+                    <label asp-for="CategoryId" class="p-0"></label>
+                    <select asp-for="CategoryId" asp-items="@(ViewData["CategoryList"] as IEnumerable<SelectListItem>)" class="form-select border-0 shadow" >
+                        <option disabled selected>-- Select Category --</option>
+                    </select>
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
 
             </div>
 

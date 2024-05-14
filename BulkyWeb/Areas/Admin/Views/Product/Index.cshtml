@@ -68,13 +68,17 @@
                         @* @obj.Category *@
                     </td>
                     <td class="row-1 align-content-end">
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-primary">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger">
                             <i class="bi bi-trash-fill"></i> Delete
                         </a>
+                    </div>
                     </td>
+
+
                 </tr>
 
             }

@@ -32,7 +32,9 @@ namespace Bulky.DataAccess.Data
                     Description = "a game relese Event .... .... .",
                     ISBN = "123123123",
                     TicketPrice = 99 ,
-                    Location = "Bengaluru, KA, IN"
+                    Location = "Bengaluru, KA, IN",
+                    CategoryId = 3,
+                    ImageUrl=""
 
                 },
 
@@ -45,7 +47,9 @@ namespace Bulky.DataAccess.Data
                     "2/4wheel builts and stock vehicles and showcase and much more.... .... .",
                     ISBN = "231231231",
                     TicketPrice = 800,
-                    Location = "Pune, MH, IN"
+                    Location = "Pune, MH, IN",
+                    CategoryId = 2,
+                    ImageUrl = ""
 
                 },
 
@@ -59,7 +63,10 @@ namespace Bulky.DataAccess.Data
                     "skill in gaming and build unique computer.... .... .",
                     ISBN = "312312312",
                     TicketPrice = 0,
-                    Location = "Whitefield, KA, IN"
+                    Location = "Whitefield, KA, IN",
+                    CategoryId = 3,
+                    ImageUrl = ""
+
                 },
 
 
@@ -71,7 +78,9 @@ namespace Bulky.DataAccess.Data
                     Description = "badminton tournament organised by Sai academy.... .... .",
                     ISBN = "142323423",
                     TicketPrice = 199,
-                    Location = "Mysore, KA, IN"
+                    Location = "Mysore, KA, IN",
+                    CategoryId = 1,
+                    ImageUrl = ""
                 },
 
                 new Product
@@ -82,7 +91,9 @@ namespace Bulky.DataAccess.Data
                     Description = "a game relese Event .... .... .",
                     ISBN = "132132132",
                     TicketPrice = 29,
-                    Location = "Bengaluru, KA, IN"
+                    Location = "Bengaluru, KA, IN",
+                    CategoryId = 3,
+                    ImageUrl = ""
 
                 },
 
@@ -95,7 +106,9 @@ namespace Bulky.DataAccess.Data
                     "2/4wheel builts and stock vehicles and showcase and much more.... .... .",
                     ISBN = "213213213",
                     TicketPrice = 800,
-                    Location = "Pune, MH, IN"
+                    Location = "Pune, MH, IN",
+                    CategoryId = 2,
+                    ImageUrl = ""
 
                 }
 
