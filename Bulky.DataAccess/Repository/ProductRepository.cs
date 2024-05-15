@@ -20,12 +20,36 @@ namespace Bulky.DataAccess.Repository
             _db = db;
 
         }
-        
-        
 
+
+
+        //public void Update(Product obj)
+        //{
+        //    _db.Products.Update(obj);
+        //}
+
+
+
+        //this is explisit implementation to keep the last data which has not been updated when editing.
         public void Update(Product obj)
         {
-            _db.Products.Update(obj);
+            var objFromDb = _db.Products.FirstOrDefault(u => u.Id == obj.Id);
+            if (objFromDb != null)
+            {
+                objFromDb.TicketTitle = obj.TicketTitle;
+                objFromDb.Description = obj.Description;
+                objFromDb.ISBN = obj.ISBN;
+                objFromDb.Publisher = obj.Publisher;
+                objFromDb.TicketPrice = obj.TicketPrice;
+                objFromDb.CategoryId = obj.CategoryId;
+                objFromDb.Location = obj.Location;
+                if (obj.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl = obj.ImageUrl;
+                }
+            }
+
         }
+
     }
 }

@@ -20,15 +20,15 @@
                 
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Product" asp-action="Create" class="btn btn-outline-dark">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-outline-dark">
                     <i class="bi bi-bookmark-plus"></i>Create list
                 </a>
             </div>
         </div>
 
-   
 
-    <table class="table table-bordered table-striped">
+
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                     <th>TicketTitle</th>
@@ -42,7 +42,7 @@
 
             </tr>
         </thead>
-        <tbody>
+        @* <tbody>
             @foreach (var obj in Model)
             {
                 <tr>
@@ -65,11 +65,11 @@
                         @obj.Location
                     </td>
                     <td class="col-1 md-lg-1 ">
-                        @* @obj.Category *@
+                        @obj.Category.Name
                     </td>
                     <td class="row-1 align-content-end">
                     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-primary">
+                        <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-outline-primary">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-danger">
@@ -82,11 +82,14 @@
                 </tr>
 
             }
-        </tbody>
+        </tbody> *@
     </table>
     </div>
 </div>
 
+@section scripts{
+    <script src="~/js/product.js"></script>
+}
 
 
 
