@@ -42,7 +42,7 @@ button.accept-policy {
 
 
 .footer {
-    position :fixed ;
+    position :absolute ;
     margin-top: 30px;
     /*margin-bottom: 0px;*/
     bottom: 0;
