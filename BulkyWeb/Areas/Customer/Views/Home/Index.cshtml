@@ -1,8 +1,31 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="border-0 p-3 shadow broder-top broder-5 rounded">
+                        <img src="@product.ImageUrl" class="card-img-top rounded" width="20%"/>
+                        <div class=" card—body pb-0">
+                            <div class="pt-2 pl-1">
+                                <p class="card-title h5 text-info-emphasis   opacity-75 fw-bold text-uppercase text-center">@product.TicketTitle</p>
+                                <p class="card-title text-warning text-center">by <b>@product.Publisher</b></p>
+                            </div>
+                            <div class="pl-1 ">
+                                <p class=" text-secondary-emphasis text-center mb-2 fw-bold">Entery Fee <span class="text-success-emphasis">@product.TicketPrice.ToString("c")</span></p>
+                            </div>
+                            <div class="pl-1 ">
+                                <p class=" text-dark text-end"> -<span>@product.Location</span></p>
+                            </div>
+                            <div>
+                                <a asp-action="TicketPage" asp-route-TicketId="@product.Id" class="btn btn-primary opacity-75 btn-sm bg-gradient border-0 form-control" >Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
