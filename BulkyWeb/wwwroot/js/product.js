@@ -9,10 +9,10 @@ function loadDataTable() {
         "columns": [
             { data: 'ticketTitle' ,"width":"15%" },
             { data: 'description', "width": "23%" },
-            { data: 'isbn', "width": "7%" },
+            { data: 'isbn', "width": "12%" },
             { data: 'publisher', "width": "10%" },
             { data: 'ticketPrice', "width": "5%" },
-            { data: 'location', "width": "15%" },
+            { data: 'location', "width": "13%" },
             { data: 'category.name', "width": "10%" },
             {
                 data: 'id',
@@ -22,7 +22,7 @@ function loadDataTable() {
                     <a onClick=Delete('/admin/product/delete/${data}') class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Delete</a>
                     </div > `
                 },
-                "width": "15%"
+                "width": "12%"
             }
         ]
     });

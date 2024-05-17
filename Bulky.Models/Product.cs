@@ -17,13 +17,13 @@ namespace Bulky.Models
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Ticket Title")]
+        [DisplayName("Event Title")]
         public string TicketTitle { get; set; }
 
         public string Description { get; set; }
 
         [Required]
-        [DisplayName("Ticket Code")]
+        [DisplayName("Event Code")]
         public string ISBN { get; set; }
 
         [Required]
@@ -39,12 +39,15 @@ namespace Bulky.Models
 
 
         //[Required]
+        [DisplayName("Category")]
+
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
         [ValidateNever]
         public Category Category { get; set; }
 
+        [DisplayName("Uplode Image")]
         [ValidateNever]
         public string ImageUrl { get; set; }
     }

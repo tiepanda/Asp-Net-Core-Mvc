@@ -14,7 +14,7 @@ namespace Bulky.Models
         public string Name { get; set; }
 
         [Range(1, 100)]
-        [DisplayName("Display Order")]
+        [DisplayName("Category Order")]
         public int DisplayOrder { get; set; }
 
     }
