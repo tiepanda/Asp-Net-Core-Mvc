@@ -38,11 +38,10 @@ namespace BulkyWeb.Areas.Admin.Controllers
         {
             ProductVM productVM = new()
             {
-                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                CategoryList = _unitOfWork.Category.GetAll().OrderBy(c=>c.DisplayOrder).Select(u => new SelectListItem
                 {
                     Text = u.Name,
-                    Value = u.Id.ToString()
-
+                    Value = u.Id/*DisplayOrder*/.ToString(),
                 }),
                 Product = new Product()
             };
