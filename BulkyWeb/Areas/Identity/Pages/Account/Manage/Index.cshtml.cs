@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Bulky.DataAccess.Data;
 using Bulky.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -103,6 +104,7 @@ namespace BulkyWeb.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
+
             //Add the new fields here
             //var name = user.Name;
             //var lastName = user.LastName;
@@ -112,6 +114,7 @@ namespace BulkyWeb.Areas.Identity.Pages.Account.Manage
             //var country = user.Country;
             //var postalCode = user.PostalCode;
 
+            // Fetch the user again, this time including the custom properties
             var userWithCustomProperties = await _userManager.FindByIdAsync(user.Id);
 
             var name = userWithCustomProperties.Name;
@@ -172,6 +175,22 @@ namespace BulkyWeb.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+            // Save the new fields here
+            user.Name = Input.Name;
+            user.LastName = Input.LastName;
+            user.StreetAddress = Input.StreetAddress;
+            user.City = Input.City;
+            user.State = Input.State;
+            user.Country = Input.Country;
+            user.PostalCode = Input.PostalCode;
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to update profile.";
+                return RedirectToPage();
             }
 
             await _signInManager.RefreshSignInAsync(user);
