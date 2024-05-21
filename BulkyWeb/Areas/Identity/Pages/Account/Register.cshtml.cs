@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Bulky.Models;
@@ -22,6 +24,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+
 
 namespace BulkyWeb.Areas.Identity.Pages.Account
 {
@@ -51,6 +54,8 @@ namespace BulkyWeb.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
         }
+
+
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -116,11 +121,26 @@ namespace BulkyWeb.Areas.Identity.Pages.Account
 
             //
 
+            [DisplayName("Address")]
             public string? StreetAddress { get; set; }
             public string? City { get; set; }
             public string? State { get; set; }
+
             public string? PostalCode { get; set; }
-            public int PhoneNumber { get; set; }
+
+            //[Required(ErrorMessage = "Phone number is required")]
+            //[RegularExpression(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$", ErrorMessage = "Invalid phone number")]
+            //[DataType(DataType.PhoneNumber)]
+            [Required]
+            [Phone]
+            public string? PhoneNumber { get; set; }
+
+            public string? Country { get; set; }
+            [Required]
+            [DisplayName("First Name")]
+            public string? Name{ get; set; }
+            public string? LastName{ get; set; }
+
 
 
         }
@@ -153,20 +173,32 @@ namespace BulkyWeb.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                    
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Name+Input.LastName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.Name = Input.Name;
+                user.LastName = Input.LastName;
+                user.PhoneNumber =Input.PhoneNumber;
+                user.StreetAddress = Input.StreetAddress;
+                user.City = Input.City;
+                user.State = Input.State;
+                user.Country = Input.Country;
+                user.PostalCode = Input.PostalCode;
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+
+
                     //
-                    if(!String.IsNullOrEmpty(Input.Role))
+                    if (!String.IsNullOrEmpty(Input.Role))
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     }
@@ -196,6 +228,7 @@ namespace BulkyWeb.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+                        return RedirectToPage(returnUrl);   
                 }
                 foreach (var error in result.Errors)
                 {
