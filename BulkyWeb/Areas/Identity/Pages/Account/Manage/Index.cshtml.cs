@@ -17,23 +17,23 @@ namespace BulkyWeb.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        //private readonly UserManager<IdentityUser> _userManager;
-        //private readonly SignInManager<IdentityUser> _signInManager;
+        //private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly SignInManager<ApplicationUser> _signInManager;
 
 
         //public IndexModel(
-        //    UserManager<IdentityUser> userManager,
-        //    SignInManager<IdentityUser> signInManager)
+        //    UserManager<ApplicationUser> userManager,
+        //    SignInManager<ApplicationUser> signInManager)
         //{
         //    _userManager = userManager;
         //    _signInManager = signInManager;
         //}
-        private readonly UserManager<ApplicationUser> _userManager; // Change IdentityUser to ApplicationUser
-        private readonly SignInManager<ApplicationUser> _signInManager; // Change IdentityUser to ApplicationUser
+        private readonly UserManager<ApplicationUser> _userManager; // Change ApplicationUser to ApplicationUser
+        private readonly SignInManager<ApplicationUser> _signInManager; // Change ApplicationUser to ApplicationUser
 
         public IndexModel(
-            UserManager<ApplicationUser> userManager, // Change IdentityUser to ApplicationUser
-            SignInManager<ApplicationUser> signInManager) // Change IdentityUser to ApplicationUser
+            UserManager<ApplicationUser> userManager, // Change ApplicationUser to ApplicationUser
+            SignInManager<ApplicationUser> signInManager) // Change ApplicationUser to ApplicationUser
         {
             _userManager = userManager;
             _signInManager = signInManager;
